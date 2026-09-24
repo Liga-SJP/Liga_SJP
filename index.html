@@ -678,8 +678,8 @@ function renderGoals(){
     ${rows.map(r=>`<tr><td class="team-a">${esc(r.name)}</td><td>${esc(r.team)}</td><td class="num" style="font-weight:700;color:var(--primary)">${r.tot}</td></tr>`).join('')}
   </tbody></table></div>` : '<p class="empty">Todavía no hay goles cargados.</p>';
   const log = document.getElementById('goals-log');
-  log.innerHTML = state.goals.length? `<div class="table-wrap"><table><thead><tr><th>Jugador</th><th class="num">Goles</th><th>Partido</th><th></th></tr></thead><tbody>
-    ${state.goals.map(g=>`<tr><td>${esc(playerName(g.player))}</td><td class="num">${g.goals}</td><td>${g.match?esc(matchLabel(g.match)):'—'}</td>
+  log.innerHTML = state.goals.length? `<div class="table-wrap"><table><thead><tr><th>Jugador</th><th>Equipo</th><th class="num">Goles</th><th>Partido</th><th></th></tr></thead><tbody>
+    ${state.goals.map(g=>`<tr><td>${esc(playerName(g.player))}</td><td>${esc(teamName(playerTeam(g.player)))}</td><td class="num">${g.goals}</td><td>${g.match?esc(matchLabel(g.match)):'—'}</td>
     <td class="actions admin-only"><button class="link danger" onclick="deleteGoal('${g.id}')">Borrar</button></td></tr>`).join('')}
   </tbody></table></div>` : '<p class="empty">Sin registros.</p>';
 }
